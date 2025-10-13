@@ -21,7 +21,9 @@ def create_number_list(start, end):
     """
     # TODO: Implement this function
     # Hint: Use range() and convert to list
-    pass
+    my_list = [] 
+    my_list.extend(range(start, end+1))
+    return my_list
 
 
 def filter_even_numbers(numbers):
@@ -40,8 +42,11 @@ def filter_even_numbers(numbers):
     """
     # TODO: Implement this function
     # You can use a loop or list comprehension
-    pass
-
+    even_numbers = []
+    for n in numbers:
+        if n % 2 == 0:  # si le nombre est pair
+            even_numbers.append(n)
+    return even_numbers
 
 def square_numbers(numbers):
     """
@@ -59,7 +64,11 @@ def square_numbers(numbers):
     """
     # TODO: Implement this function
     # Hint: Try a list comprehension!
-    pass
+    squares = []
+    for n in numbers:
+        squares.append(n**2) # mets les nombres au carré
+    return squares
+
 
 
 def find_max_min(numbers):
@@ -78,7 +87,9 @@ def find_max_min(numbers):
     """
     # TODO: Implement this function
     # You can use max() and min() built-in functions
-    pass
+    max_value = max(numbers)  # trouve le plus grand nombre
+    min_value = min(numbers)  # trouve le plus petit nombre
+    return (max_value, min_value)  # renvoie un tuple
 
 
 def remove_duplicates(items):
@@ -98,7 +109,12 @@ def remove_duplicates(items):
     # TODO: Implement this function
     # Hint: You can use a loop and check if item is already in result list
     # Or convert to set and back to list (but this doesn't preserve order)
-    pass
+    result = []
+    for item in items:
+        if item not in result:  # si l'élément n'est pas déjà dans la liste résultat
+            result.append(item)  # on l'ajoute
+    return result
+
 
 
 def merge_lists(list1, list2):
@@ -121,7 +137,16 @@ def merge_lists(list1, list2):
     """
     # TODO: Implement this function
     # Hint: Use a loop with index, handle different lengths
-    pass
+    merged = []
+    # On parcourt jusqu'à la longueur la plus courte
+    min_len = min(len(list1), len(list2))
+    for i in range(min_len):
+        merged.append(list1[i])
+        merged.append(list2[i])
+    # On ajoute le reste de la liste la plus longue
+    merged.extend(list1[min_len:])
+    merged.extend(list2[min_len:])
+    return merged
 
 
 def list_statistics(numbers):
@@ -143,7 +168,14 @@ def list_statistics(numbers):
 
     # TODO: Implement this function
     # Calculate and return a dictionary with the statistics
-    pass
+    stats = {
+        'sum': sum(numbers),              # somme des nombres
+        'average': sum(numbers) / len(numbers),  # moyenne
+        'count': len(numbers),            # nombre d'éléments
+        'max': max(numbers),              # maximum
+        'min': min(numbers)               # minimum
+    }
+    return stats
 
 
 def chunk_list(items, chunk_size):
@@ -163,7 +195,10 @@ def chunk_list(items, chunk_size):
     """
     # TODO: Implement this function
     # Hint: Use list slicing in a loop
-    pass
+    chunks = []
+    for i in range(0, len(items), chunk_size):  # on avance par pas de chunk_size
+        chunks.append(items[i:i + chunk_size])  # on prend une tranche de la liste
+    return chunks
 
 
 # Test cases
